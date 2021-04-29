@@ -3,6 +3,8 @@ namespace IPZLabsVarCinema
     public record Hall
     (
         int Id,
-        string Name
+        string Name,
+        int SeatRowCount,
+        int SeatRowSize
     );
 }
