@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace IPZLabsVarCinema
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            await using var dbContext = new CinemaDbContext();
+            dbContext.Database.EnsureCreated();
+            Console.WriteLine("Success!");
         }
     }
 }
