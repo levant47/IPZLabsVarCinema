@@ -1,3 +1,5 @@
+using System;
+
 namespace IPZLabsVarCinema
 {
     public record Session
