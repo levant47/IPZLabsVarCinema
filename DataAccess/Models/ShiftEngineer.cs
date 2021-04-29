@@ -1,6 +1,6 @@
 namespace IPZLabsVarCinema
 {
-    public record ShiftBarista
+    public record ShiftEngineer
     (
         int ShiftId,
         int UserId
