@@ -6,7 +6,7 @@ namespace IPZLabsVarCinema
     (
         int Id,
         int UserId,
-        int Session,
+        int SessionId,
         int SeatRow,
         int SeatIndex,
         DateTime PurchaseTime
