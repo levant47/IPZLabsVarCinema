@@ -55,7 +55,7 @@ namespace IPZLabsVarCinema
                 Email: "john_doe@cinema.com",
                 RegistrationTime: now,
                 Password: PasswordEncoder.Encode("password123"),
-                Role: Role.Personel
+                Role: Role.Personnel
             )).Entity;
             var engineerUser = dbContext.Users.Add(new User
             (
@@ -65,7 +65,7 @@ namespace IPZLabsVarCinema
                 Email: "jane_doe@cinema.com",
                 RegistrationTime: now,
                 Password: PasswordEncoder.Encode("password321"),
-                Role: Role.Personel
+                Role: Role.Personnel
             )).Entity;
             var clientUser = dbContext.Users.Add(new User
             (
