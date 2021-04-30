@@ -78,6 +78,8 @@ namespace IPZLabsVarCinema
                 Role: Role.Client
             )).Entity;
 
+            await dbContext.SaveChangesAsync();
+
             var movieSchedule = dbContext.MovieSchedules.Add(new MovieSchedule
             (
                 ScheduleId: schedule.Id,
@@ -90,6 +92,9 @@ namespace IPZLabsVarCinema
                 HallId: hall.Id,
                 StartTime: new DateTime(2021, 04, 29, 16, 0, 0)
             )).Entity;
+
+            await dbContext.SaveChangesAsync();
+
             var shiftBarista = dbContext.ShiftBaristas.Add(new ShiftBarista
             (
                 ShiftId: shift.Id,
@@ -109,6 +114,9 @@ namespace IPZLabsVarCinema
                 SeatIndex: 8,
                 PurchaseTime: now
             )).Entity;
+
+            await dbContext.SaveChangesAsync();
+
             var ticketProduct = dbContext.TicketProducts.Add(new TicketProduct
             (
                 TicketId: ticket.Id,
