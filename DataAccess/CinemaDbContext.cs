@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace IPZLabsVarCinema
 {
@@ -21,11 +23,13 @@ namespace IPZLabsVarCinema
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Filename=cinema.db");
+            optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
             base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Composite primary keys
             modelBuilder.Entity<MovieSchedule>()
                 .HasKey(movieSchedule => new { movieSchedule.MovieId, movieSchedule.ScheduleId });
 
@@ -37,6 +41,56 @@ namespace IPZLabsVarCinema
 
             modelBuilder.Entity<TicketProduct>()
                 .HasKey(ticketProduct => new { ticketProduct.TicketId, ticketProduct.ProductId });
+
+            // Foreign keys
+            modelBuilder.Entity<MovieSchedule>()
+                .HasOne<Movie>()
+                .WithMany()
+                .HasForeignKey(movieSchedule => movieSchedule.MovieId);
+            modelBuilder.Entity<MovieSchedule>()
+                .HasOne<Schedule>()
+                .WithMany()
+                .HasForeignKey(movieSchedule => movieSchedule.ScheduleId);
+            modelBuilder.Entity<Session>()
+                .HasOne<Movie>()
+                .WithMany()
+                .HasForeignKey(session => session.MovieId);
+            modelBuilder.Entity<Session>()
+                .HasOne<Hall>()
+                .WithMany()
+                .HasForeignKey(session => session.HallId);
+            modelBuilder.Entity<ShiftBarista>()
+                .HasOne<Shift>()
+                .WithMany()
+                .HasForeignKey(shiftBarista => shiftBarista.ShiftId);
+            modelBuilder.Entity<ShiftBarista>()
+                .HasOne<User>()
+                .WithMany()
+                .HasForeignKey(shiftBarista => shiftBarista.UserId);
+            modelBuilder.Entity<ShiftEngineer>()
+                .HasOne<Shift>()
+                .WithMany()
+                .HasForeignKey(shiftEngineer => shiftEngineer.ShiftId);
+            modelBuilder.Entity<ShiftEngineer>()
+                .HasOne<User>()
+                .WithMany()
+                .HasForeignKey(shiftEngineer => shiftEngineer.UserId);
+            modelBuilder.Entity<Ticket>()
+                .HasOne<User>()
+                .WithMany()
+                .HasForeignKey(ticket => ticket.UserId);
+            modelBuilder.Entity<Ticket>()
+                .HasOne<Session>()
+                .WithMany()
+                .HasForeignKey(ticket => ticket.SessionId);
+            modelBuilder.Entity<TicketProduct>()
+                .HasOne<Ticket>()
+                .WithMany()
+                .HasForeignKey(ticketProduct => ticketProduct.TicketId);
+            modelBuilder.Entity<TicketProduct>()
+                .HasOne<Product>()
+                .WithMany()
+                .HasForeignKey(ticketProduct => ticketProduct.ProductId);
         }
     }
 }
