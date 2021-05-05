@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,9 +12,8 @@ namespace IPZLabsVarCinema
         {
             await using var dbContext = new CinemaDbContext();
             dbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            var usersRepository = new UsersRepository(dbContext);
 
-            var newUser = new User
+            dbContext.Add(new User
             (
                 Id: 0,
                 FirstName: "Joe",
@@ -21,13 +22,11 @@ namespace IPZLabsVarCinema
                 RegistrationTime: DateTime.Now,
                 Password: PasswordEncoder.Encode("america123"),
                 Role: Role.Administrator
-            );
-            var createdUser = usersRepository.Create(newUser);
-            var fetchedUser = usersRepository.GetById(createdUser.Id);
-            Console.WriteLine(string.Join("\n",
-                $"Created user: {createdUser}",
-                $"Fetched user: {fetchedUser}"
             ));
+            await dbContext.SaveChangesAsync();
+
+            var dict = new Dictionary<int, int> { { 1, 1 }, { 2, 2 } };
+            Console.WriteLine(string.Join(", ", (await dbContext.Users.Where(user => dict.ContainsValue(user.Id)).ToListAsync()).Select(user => user.ToString())));
         }
     }
 }
