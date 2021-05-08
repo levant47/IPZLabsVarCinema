@@ -1,3 +1,8 @@
 import * as React from "react";
+import { Header } from "./header";
 
-export const Main = () => <h1>Hello, world!</h1>;
+export const Main = () => (
+    <>
+        <Header />
+    </>
+);
