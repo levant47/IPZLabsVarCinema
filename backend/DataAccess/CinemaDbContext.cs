@@ -115,7 +115,18 @@ Hero was first released in China on 24 October 2002. At that time, it was the mo
 @"Ip Man 4: The Finale is a 2019 martial arts film directed by Wilson Yip and produced by Raymond Wong. It is the fourth and final film in the Ip Man film series, which is loosely based on the life of the Wing Chun grandmaster of the same name, and features Donnie Yen in the title role.
 A co-production of Hong Kong and China, the film began production in April 2018 and ended in July of the same year. It was released on 20 December 2019.",
                     Poster: "https://m.media-amazon.com/images/M/MV5BNzYyZWIwZjQtZGVjZi00NWIxLTk0ODMtNzA3YzE5MWM3OWI0XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
-                )
+                ),
+                new Movie
+                (
+                    Id: 0,
+                    Name: "Titanic",
+                    Year: 1997,
+                    Description:
+@"Titanic is a 1997 American epic romance and disaster film directed, written, co-produced, and co-edited by James Cameron. 
+Incorporating both historical and fictionalized aspects, it is based on accounts of the sinking of the RMS Titanic, and stars Leonardo DiCaprio and Kate Winslet as members of different social classes who fall in love aboard the ship during its ill-fated maiden voyage.",
+                    Poster: "https://cdn.shopify.com/s/files/1/1416/8662/products/titanic_1997_styleA_original_film_art_d26e81c0-1b87-4076-9da4-9fcdc0389ea5_1200x.jpg?v=1607475298"
+                ),
+
             );
         }
     }
