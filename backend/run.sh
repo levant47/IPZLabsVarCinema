@@ -1,1 +1,1 @@
-dotnet run --project Console/Console.csproj
+dotnet run --project Api/Api.csproj
