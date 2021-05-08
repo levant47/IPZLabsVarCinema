@@ -2,7 +2,7 @@ import * as React from "react";
 import { Contacts } from "./contacts";
 import { Header } from "./header";
 import { LogIn } from "./login";
-import { Movies } from "./movies";
+import { MoviesListPage } from "./movie/list-page";
 
 export const Main = () => {
     const route = location.pathname;
@@ -10,7 +10,7 @@ export const Main = () => {
         <>
             <Header />
             {(route === "/" || route === "/movies") &&
-                <Movies />}
+                <MoviesListPage />}
             {route === "/login" &&
                 <LogIn />}
             {route === "/contacts" &&

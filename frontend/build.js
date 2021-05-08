@@ -9,6 +9,7 @@ esbuild.serve({
     bundle: true,
     minify: true,
     outfile: 'static/bundle.js',
+    sourcemap: true,
 }).then(result => {
     const {host, port} = result
 
@@ -21,6 +22,22 @@ esbuild.serve({
             method: req.method,
             headers: req.headers,
         };
+
+        // forward incoming api request to the api server
+        if (req.url.startsWith("/api")) {
+            const apiRequest = http.request({
+                hostname: "localhost",
+                port: 5000,
+                path: req.url,
+                method: req.method,
+                headers: req.headers
+            }, apiResult => {
+                res.writeHead(apiResult.statusCode, apiResult.headers);
+                apiResult.pipe(res, { end: true });
+            })
+            req.pipe(apiRequest, { end: true });
+            return;
+        }
 
         // Forward each incoming request to esbuild
         const proxyReq = http.request(options, proxyRes => {

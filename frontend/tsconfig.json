@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
     "skipLibCheck": true,
+    "target": "ES5",
+    "moduleResolution": "node",
+    "lib": ["ES2018", "DOM"],
     "jsx": "preserve",
     "noEmit": true,
-    "watch": true
+    "watch": true,
+    "strictNullChecks": true
   },
   "include": [
     "src/index.tsx"
