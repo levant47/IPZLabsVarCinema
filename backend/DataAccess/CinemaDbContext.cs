@@ -92,5 +92,31 @@ namespace IPZLabsVarCinema
                 .WithMany()
                 .HasForeignKey(ticketProduct => ticketProduct.ProductId);
         }
+
+        public void Seed()
+        {
+            Movies.AddRange(
+                new Movie
+                (
+                    Id: 0,
+                    Name: "Hero",
+                    Year: 2002,
+                    Description:
+@"Hero is a 2002 Chinese wuxia film directed by Zhang Yimou. Starring Jet Li as the nameless protagonist, the film is based on the story of Jing Ke's assassination attempt on the King of Qin in 227 BC.
+Hero was first released in China on 24 October 2002. At that time, it was the most expensive project and one of highest-grossing motion pictures in China. Miramax acquired American market distribution rights, but delayed the release of the film for nearly two years. Quentin Tarantino eventually convinced Miramax to open the film in American theaters on 27 August 2004. The film received positive reviews from critics. It became the first Chinese-language movie to place No. 1 at the American box office, where it stayed for two consecutive weeks, and went on to earn $53.7 million in the United States and $177 million worldwide.",
+                    Poster: "https://m.media-amazon.com/images/M/MV5BMWQ2MjQ0OTctMWE1OC00NjZjLTk3ZDAtNTk3NTZiYWMxYTlmXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY1200_CR89,0,630,1200_AL_.jpg"
+                ),
+                new Movie
+                (
+                    Id: 0,
+                    Name: "Ip Man 4",
+                    Year: 2020,
+                    Description:
+@"Ip Man 4: The Finale is a 2019 martial arts film directed by Wilson Yip and produced by Raymond Wong. It is the fourth and final film in the Ip Man film series, which is loosely based on the life of the Wing Chun grandmaster of the same name, and features Donnie Yen in the title role.
+A co-production of Hong Kong and China, the film began production in April 2018 and ended in July of the same year. It was released on 20 December 2019.",
+                    Poster: "https://m.media-amazon.com/images/M/MV5BNzYyZWIwZjQtZGVjZi00NWIxLTk0ODMtNzA3YzE5MWM3OWI0XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
+                )
+            );
+        }
     }
 }
