@@ -11,5 +11,8 @@ namespace IPZLabsVarCinema
         public MoviesController(CinemaDbContext dbContext) => _dbContext = dbContext;
 
         public object GetAll() => _dbContext.Movies.ToList();
+
+        [HttpGet("{movieId}")]
+        public object GetById([FromRoute] int movieId) => _dbContext.Movies.FirstOrDefault(movie => movie.Id == movieId);
     }
 }
