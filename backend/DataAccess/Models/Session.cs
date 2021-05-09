@@ -13,6 +13,8 @@ namespace IPZLabsVarCinema
     {
         public Hall Hall { get; set; } = null!;
 
+        public Movie Movie { get; set; } = null!;
+
         public List<Ticket> Tickets { get; set; } = null!;
     }
 }

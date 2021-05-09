@@ -5,13 +5,13 @@ import * as _ from "lodash/fp";
 import { PropsFromStyled } from "../utils/styled-utils";
 import { Movie } from "./model";
 import { MovieRating } from "./rating";
-import { SessionVM } from "../session/view-model";
+import { SessionForMovieVM } from "../session/for-movie-vm";
 import { SessionCard } from "../session/card";
 
 export const MovieDetailsPage = styled((props: PropsFromStyled) => {
     const movieIdFromRoute = _.parseInt(10, location.pathname.split("/")[2]);
     const [movie, setMovie] = useState<Movie>();
-    const [sessions, setSessions] = useState<SessionVM[]>([]);
+    const [sessions, setSessions] = useState<SessionForMovieVM[]>([]);
 
     useEffect(() => {
         fetch(`/api/movies/${movieIdFromRoute}`)

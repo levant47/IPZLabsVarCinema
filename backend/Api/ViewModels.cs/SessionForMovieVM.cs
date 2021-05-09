@@ -2,7 +2,7 @@ using System;
 
 namespace IPZLabsVarCinema
 {
-    public record SessionVM
+    public record SessionForMovieVM
     (
         int Id,
         string HallName,

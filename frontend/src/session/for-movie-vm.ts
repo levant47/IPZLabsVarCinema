@@ -1,6 +1,6 @@
 import { DateString, ℕ } from "../utils/types";
 
-export interface SessionVM {
+export interface SessionForMovieVM {
     id: ℕ;
     hallName: string;
     startTime: DateString;

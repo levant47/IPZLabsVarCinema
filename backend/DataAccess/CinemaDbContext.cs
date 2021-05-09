@@ -53,7 +53,7 @@ namespace IPZLabsVarCinema
                 .WithMany()
                 .HasForeignKey(movieSchedule => movieSchedule.ScheduleId);
             modelBuilder.Entity<Session>()
-                .HasOne<Movie>()
+                .HasOne(session => session.Movie)
                 .WithMany()
                 .HasForeignKey(session => session.MovieId);
             modelBuilder.Entity<Session>()
@@ -239,49 +239,51 @@ Harry makes close friends and a few enemies during his first year at the school,
             };
             Movies.AddRange(movies.Reverse());
 
+            var defaultSeatRowCount = 10;
+            var defaultRowSize = 15;
             var halls = new[]
             {
                 new Hall
                 (
                     Id: 0,
                     Name: "Hall A",
-                    SeatRowCount: 20,
-                    SeatRowSize: 20
+                    SeatRowCount: defaultSeatRowCount,
+                    SeatRowSize: defaultRowSize
                 ),
                 new Hall
                 (
                     Id: 0,
                     Name: "Hall B",
-                    SeatRowCount: 20,
-                    SeatRowSize: 20
+                    SeatRowCount: defaultSeatRowCount,
+                    SeatRowSize: defaultRowSize
                 ),
                 new Hall
                 (
                     Id: 0,
                     Name: "Hall C",
-                    SeatRowCount: 20,
-                    SeatRowSize: 20
+                    SeatRowCount: defaultSeatRowCount,
+                    SeatRowSize: defaultRowSize
                 ),
                 new Hall
                 (
                     Id: 0,
                     Name: "Hall D",
-                    SeatRowCount: 20,
-                    SeatRowSize: 20
+                    SeatRowCount: defaultSeatRowCount,
+                    SeatRowSize: defaultRowSize
                 ),
                 new Hall
                 (
                     Id: 0,
                     Name: "Hall E",
-                    SeatRowCount: 20,
-                    SeatRowSize: 20
+                    SeatRowCount: defaultSeatRowCount,
+                    SeatRowSize: defaultRowSize
                 ),
                 new Hall
                 (
                     Id: 0,
                     Name: "Hall F",
-                    SeatRowCount: 20,
-                    SeatRowSize: 20
+                    SeatRowCount: defaultSeatRowCount,
+                    SeatRowSize: defaultRowSize
                 ),
             };
             Halls.AddRange(halls);

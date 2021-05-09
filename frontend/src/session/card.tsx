@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { SessionVM } from "./view-model";
+import { SessionForMovieVM } from "./for-movie-vm";
 import { PropsFromStyled } from "../utils/styled-utils";
 import { DateString } from "../utils/types";
 
@@ -10,7 +10,7 @@ const formatSessionTime = (time: DateString): string => {
 };
 
 interface Props extends PropsFromStyled {
-    session: SessionVM;
+    session: SessionForMovieVM;
 }
 
 export const SessionCard = styled((props: Props) => (
