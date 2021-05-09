@@ -14,7 +14,7 @@ interface Props extends PropsFromStyled {
 }
 
 export const SessionCard = styled((props: Props) => (
-    <a className={props.className} href={`/sessions/${props.session.id}`}>
+    <a className={props.className} href={localStorage.getItem("user") !== null ? `/sessions/${props.session.id}` : "/login"}>
         {props.session.hallName}, {formatSessionTime(props.session.startTime)}, Seats: {props.session.seatsOccupied}/{props.session.seatsTotal}
     </a>
 ))`
