@@ -6,6 +6,7 @@ import { MoviesListPage } from "./movie/list-page";
 import { MovieDetailsPage } from "./movie/details-page";
 import { SessionDetailsPage } from "./session/details-page";
 import { User } from "./user/model";
+import { AccountPage } from "./account-page";
 
 interface State {
     user: User | undefined;
@@ -38,6 +39,8 @@ export const Main = () => {
                 <LogIn />}
             {route === "/contacts" &&
                 <Contacts />}
+            {route === "/account" &&
+                <AccountPage />}
             {/\/movies\/\d+/.test(route) &&
                 <MovieDetailsPage />}
             {/\/sessions\/\d+/.test(route) &&

@@ -15,6 +15,8 @@ export const Header = styled((props: PropsFromStyled) => {
             <a className="title" style={{gridArea: "label"}} href="/">Cinema</a>
             <a style={{gridArea: "movies"}} href="/movies">Movies</a>
             <a style={{gridArea: "contacts"}} href="/contacts">Contacts</a>
+            {isLoggedIn &&
+                <a style={{gridArea: "account"}} href="/account">Account</a>}
             <a className="login" style={{gridArea: "login"}} href={"/login"} onClick={isLoggedIn ? handleLogOut : undefined}>{!isLoggedIn ? "Log in" : "Log out"}</a>
         </header>
     );
@@ -24,7 +26,7 @@ export const Header = styled((props: PropsFromStyled) => {
     display: grid;
     align-items: baseline;
     grid-template:
-        "logo label movies contacts .   login"
+        "logo label movies account contacts .   login"
         /auto auto  auto   auto     1fr auto
     ;
 
