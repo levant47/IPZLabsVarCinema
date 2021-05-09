@@ -6,9 +6,9 @@ export const Header = styled((props: PropsFromStyled) => (
     <header className={props.className}>
         <a style={{gridArea: "logo"}} href="/"><img src="/logo.png" width={40} height={40} /></a>
         <a className="title" style={{gridArea: "label"}} href="/">Cinema</a>
-        <a style={{gridArea: "movies"}} href="movies">Movies</a>
-        <a style={{gridArea: "contacts"}} href="contacts">Contacts</a>
-        <a className="login" style={{gridArea: "login"}} href="login">Log in</a>
+        <a style={{gridArea: "movies"}} href="/movies">Movies</a>
+        <a style={{gridArea: "contacts"}} href="/contacts">Contacts</a>
+        <a className="login" style={{gridArea: "login"}} href="/login">Log in</a>
     </header>
 ))`
     margin: 0 20vw 5vh;
