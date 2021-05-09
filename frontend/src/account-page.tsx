@@ -33,7 +33,7 @@ export const AccountPage = styled((props: PropsFromStyled) => {
             {tickets === undefined &&
                 "Loading..."}
             {tickets?.map(ticket =>
-                <TicketContainer>"{ticket.movieName}", {ticket.hallName}, {formatSessionTime(ticket.sessionStartTime)}, Row {ticket.row}, Seat {ticket.seat}</TicketContainer>)}
+                <TicketContainer>"{ticket.movieName}", {ticket.hallName}, {formatSessionTime(ticket.sessionStartTime)}, Row {ticket.row + 1}, Seat {ticket.seat + 1}</TicketContainer>)}
         </main>
     );
 })`
