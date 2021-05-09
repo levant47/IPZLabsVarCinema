@@ -9,18 +9,15 @@ interface Props extends PropsFromStyled {
 }
 
 export const MovieCard = styled((props: Props) => (
-    <div className={props.className}>
+    <a className={props.className} href={`/movies/${props.movie.id}`}>
         <img className="poster" style={{gridArea: "poster"}} src={props.movie.poster} height={300} width={200} />
         <span className="name" style={{gridArea: "name"}}>{props.movie.name}</span>
         <span className="year" style={{gridArea: "year"}}>({props.movie.year})</span>
         <MovieRating className="rating" style={{gridArea: "rating"}} rating={props.movie.rating} />
-    </div>
+    </a>
 ))`
-/*
-    display: flex;
-    flex-direction: column;
-*/
-
+    text-decoration: none;
+    color: inherit;
     display: grid;
     grid-template:
         "poster" 300px
