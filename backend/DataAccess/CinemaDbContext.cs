@@ -101,7 +101,8 @@ namespace IPZLabsVarCinema
                 return (float)(random.NextDouble() * 4 + 1);
             });
 
-            Movies.AddRange(
+            var movies = new[]
+            {
                 new Movie
                 (
                     Id: 0,
@@ -233,8 +234,59 @@ The film follows United States Army Rangers Captain John H. Miller (Tom Hanks) a
 @"Harry Potter and the Philosopher's Stone is a fantasy novel written by British author J. K. Rowling. The first novel in the Harry Potter series and Rowling's debut novel, it follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday, when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry. 
 Harry makes close friends and a few enemies during his first year at the school, and with the help of his friends, he faces an attempted comeback by the dark wizard Lord Voldemort, who killed Harry's parents, but failed to kill Harry when he was just 15 months old.",
                     Poster: "https://fadutown.com/wp-content/uploads/2020/08/81YOuOGFCJL.jpg"
-                )
-            );
+                ),
+            };
+            Movies.AddRange(movies);
+
+            var halls = new[]
+            {
+                new Hall
+                (
+                    Id: 0,
+                    Name: "Hall A",
+                    SeatRowCount: 20,
+                    SeatRowSize: 20
+                ),
+                new Hall
+                (
+                    Id: 0,
+                    Name: "Hall B",
+                    SeatRowCount: 20,
+                    SeatRowSize: 20
+                ),
+                new Hall
+                (
+                    Id: 0,
+                    Name: "Hall C",
+                    SeatRowCount: 20,
+                    SeatRowSize: 20
+                ),
+                new Hall
+                (
+                    Id: 0,
+                    Name: "Hall D",
+                    SeatRowCount: 20,
+                    SeatRowSize: 20
+                ),
+                new Hall
+                (
+                    Id: 0,
+                    Name: "Hall E",
+                    SeatRowCount: 20,
+                    SeatRowSize: 20
+                ),
+                new Hall
+                (
+                    Id: 0,
+                    Name: "Hall F",
+                    SeatRowCount: 20,
+                    SeatRowSize: 20
+                ),
+            };
+            Halls.AddRange(halls);
+
+            SaveChanges();
+
         }
     }
 }

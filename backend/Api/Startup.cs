@@ -28,7 +28,6 @@ namespace IPZLabsVarCinema
                 dbContext.Database.EnsureDeleted();
                 dbContext.Database.EnsureCreated();
                 dbContext.Seed();
-                dbContext.SaveChanges();
             }
 
             app.UseRouting();
