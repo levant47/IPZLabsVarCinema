@@ -85,10 +85,10 @@ export const SessionDetailsPage = styled((props: PropsFromStyled) => {
                                 <td>Row {row + 1}</td>
                                 {_.range(0, session.hallSeatRowSize).map(column =>
                                     <td><Seat
-                                        occupied={session.occupiedSeats.includes(row*session.hallSeatRowSize + column+1)}
+                                        occupied={session.occupiedSeats.includes(row*session.hallSeatRowSize + column)}
                                         selected={selectedSeats.some(selectedSeat => selectedSeat.seatRow == row && selectedSeat.seatIndex === column)}
                                         onClick={() => {
-                                            if (session.occupiedSeats.includes(row*session.hallSeatRowSize + column+1)) {
+                                            if (session.occupiedSeats.includes(row*session.hallSeatRowSize + column)) {
                                                 return;
                                             }
                                             if (selectedSeats.some(selectedSeat => selectedSeat.seatRow == row && selectedSeat.seatIndex === column)) {

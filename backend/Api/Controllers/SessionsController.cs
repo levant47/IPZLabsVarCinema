@@ -43,7 +43,7 @@ namespace IPZLabsVarCinema
                 /* HallName: */ session.Hall.Name,
                 /* HallSeatRowCount: */ session.Hall.SeatRowCount,
                 /* HallSeatRowSize: */ session.Hall.SeatRowSize,
-                /* OccupiedSeats: */ session.Tickets.Select(ticket => (ticket.SeatRow - 1) * session.Hall.SeatRowSize + ticket.SeatIndex).ToList()
+                /* OccupiedSeats: */ session.Tickets.Select(ticket => ticket.SeatRow * session.Hall.SeatRowSize + ticket.SeatIndex).ToList()
             ))
             .FirstOrDefault();
     }
