@@ -237,7 +237,7 @@ Harry makes close friends and a few enemies during his first year at the school,
                     Poster: "https://fadutown.com/wp-content/uploads/2020/08/81YOuOGFCJL.jpg"
                 ),
             };
-            Movies.AddRange(movies);
+            Movies.AddRange(movies.Reverse());
 
             var halls = new[]
             {
