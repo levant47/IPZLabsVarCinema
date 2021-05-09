@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace IPZLabsVarCinema
 {
@@ -8,5 +9,10 @@ namespace IPZLabsVarCinema
         int MovieId,
         int HallId,
         DateTime StartTime
-    );
+    )
+    {
+        public Hall Hall { get; set; } = null!;
+
+        public List<Ticket> Tickets { get; set; } = null!;
+    }
 }

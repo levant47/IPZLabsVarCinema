@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
 
 namespace IPZLabsVarCinema
 {
@@ -56,7 +57,7 @@ namespace IPZLabsVarCinema
                 .WithMany()
                 .HasForeignKey(session => session.MovieId);
             modelBuilder.Entity<Session>()
-                .HasOne<Hall>()
+                .HasOne(session => session.Hall)
                 .WithMany()
                 .HasForeignKey(session => session.HallId);
             modelBuilder.Entity<ShiftBarista>()
@@ -81,7 +82,7 @@ namespace IPZLabsVarCinema
                 .HasForeignKey(ticket => ticket.UserId);
             modelBuilder.Entity<Ticket>()
                 .HasOne<Session>()
-                .WithMany()
+                .WithMany(session => session.Tickets)
                 .HasForeignKey(ticket => ticket.SessionId);
             modelBuilder.Entity<TicketProduct>()
                 .HasOne<Ticket>()
@@ -287,6 +288,25 @@ Harry makes close friends and a few enemies during his first year at the school,
 
             SaveChanges();
 
+            var now = DateTime.Now;
+            var sessionTimes = new []
+            {
+                new DateTime(now.Year, now.Month, now.Day + 1, 12, 0, 0),
+                new DateTime(now.Year, now.Month, now.Day + 1, 14, 0, 0),
+                new DateTime(now.Year, now.Month, now.Day + 1, 16, 0, 0),
+                new DateTime(now.Year, now.Month, now.Day + 1, 18, 0, 0),
+                new DateTime(now.Year, now.Month, now.Day + 1, 20, 0, 0),
+            };
+            var sessions = sessionTimes.SelectMany(sessionTime => movies.Select(movie => new Session
+            (
+                Id: 0,
+                MovieId: movie.Id,
+                HallId: halls.GetRandomElement().Id,
+                StartTime: sessionTime
+            ))).ToList();
+            Sessions.AddRange(sessions);
+
+            SaveChanges();
         }
     }
 }
