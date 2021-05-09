@@ -4,8 +4,8 @@ import { PropsFromStyled } from "./utils/styled-utils";
 
 export const Header = styled((props: PropsFromStyled) => (
     <header className={props.className}>
-        <img style={{gridArea: "logo"}} src="/logo.png" width={40} height={40} />
-        <h1 style={{gridArea: "label"}}>Cinema</h1>
+        <a style={{gridArea: "logo"}} href="/"><img src="/logo.png" width={40} height={40} /></a>
+        <a className="title" style={{gridArea: "label"}} href="/">Cinema</a>
         <a style={{gridArea: "movies"}} href="movies">Movies</a>
         <a style={{gridArea: "contacts"}} href="contacts">Contacts</a>
         <a className="login" style={{gridArea: "login"}} href="login">Log in</a>
@@ -24,8 +24,11 @@ export const Header = styled((props: PropsFromStyled) => (
         margin: 5px;
     }
 
-    > h1 {
+    > .title {
         margin-right: 40px;
+        font-size: 2em;
+        font-weight: bold;
+        color: black;
     }
 
     > a {
