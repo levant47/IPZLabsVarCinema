@@ -96,6 +96,7 @@ namespace IPZLabsVarCinema
 
         public void Seed()
         {
+            var now = DateTime.Now;
             var random = new Random(Environment.TickCount);
             var RandomRating = new Func<float>(() =>
             {
@@ -288,9 +289,22 @@ Harry makes close friends and a few enemies during his first year at the school,
             };
             Halls.AddRange(halls);
 
+            var users = new[]
+            {
+                new User
+                (
+                    Id: 0,
+                    FirstName: "Anton",
+                    LastName: "Bodiak",
+                    Email: "anton.bodiak@nure.ua",
+                    RegistrationTime: now,
+                    Password: PasswordEncoder.Encode("test"),
+                    Role: Role.Client
+                ),
+            };
+
             SaveChanges();
 
-            var now = DateTime.Now;
             var sessionTimes = new []
             {
                 new DateTime(now.Year, now.Month, now.Day + 1, 12, 0, 0),
