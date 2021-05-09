@@ -3,6 +3,7 @@ import { Contacts } from "./contacts";
 import { Header } from "./header";
 import { LogIn } from "./login";
 import { MoviesListPage } from "./movie/list-page";
+import { MovieDetailsPage } from "./movie/details-page";
 
 export const Main = () => {
     const route = location.pathname;
@@ -15,6 +16,8 @@ export const Main = () => {
                 <LogIn />}
             {route === "/contacts" &&
                 <Contacts />}
+            {/\/movies\/\d+/.test(route) &&
+                <MovieDetailsPage />}
         </>
     );
 };
