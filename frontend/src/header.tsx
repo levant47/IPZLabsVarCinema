@@ -2,15 +2,23 @@ import * as React from "react";
 import styled from "styled-components";
 import { PropsFromStyled } from "./utils/styled-utils";
 
-export const Header = styled((props: PropsFromStyled) => (
-    <header className={props.className}>
-        <a style={{gridArea: "logo"}} href="/"><img src="/logo.png" width={40} height={40} /></a>
-        <a className="title" style={{gridArea: "label"}} href="/">Cinema</a>
-        <a style={{gridArea: "movies"}} href="/movies">Movies</a>
-        <a style={{gridArea: "contacts"}} href="/contacts">Contacts</a>
-        <a className="login" style={{gridArea: "login"}} href="/login">Log in</a>
-    </header>
-))`
+export const Header = styled((props: PropsFromStyled) => {
+    const isLoggedIn = localStorage.getItem("user") !== null;
+
+    const handleLogOut = () => {
+        localStorage.removeItem("user");
+    }
+
+    return (
+        <header className={props.className}>
+            <a style={{gridArea: "logo"}} href="/"><img src="/logo.png" width={40} height={40} /></a>
+            <a className="title" style={{gridArea: "label"}} href="/">Cinema</a>
+            <a style={{gridArea: "movies"}} href="/movies">Movies</a>
+            <a style={{gridArea: "contacts"}} href="/contacts">Contacts</a>
+            <a className="login" style={{gridArea: "login"}} href={"/login"} onClick={isLoggedIn ? handleLogOut : undefined}>{!isLoggedIn ? "Log in" : "Log out"}</a>
+        </header>
+    );
+})`
     margin: 0 20vw 5vh;
 
     display: grid;

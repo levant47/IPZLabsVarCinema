@@ -302,6 +302,7 @@ Harry makes close friends and a few enemies during his first year at the school,
                     Role: Role.Client
                 ),
             };
+            Users.AddRange(users);
 
             SaveChanges();
 
