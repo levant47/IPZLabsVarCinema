@@ -306,7 +306,7 @@ Harry makes close friends and a few enemies during his first year at the school,
                     Id: 0,
                     FirstName: "Oleg",
                     LastName: "Kurchenko",
-                    Email: "oleg.kurchenko@nure.ua",
+                    Email: "oleh.kurchenko@nure.ua",
                     RegistrationTime: now,
                     Password: PasswordEncoder.Encode("test"),
                     Role: Role.Client
