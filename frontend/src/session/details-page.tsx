@@ -24,12 +24,14 @@ const Seat = styled.div<{selected: boolean, occupied: boolean}>`
     }`}
 `;
 
-const SelectedSeatContainer = styled.span`
+const SelectedSeatContainer = styled.div`
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
     margin-right: 10px;
+    justify-self: start;
+    align-self: start;
 `;
 
 interface SelectedSeat {
@@ -101,7 +103,7 @@ export const SessionDetailsPage = styled((props: PropsFromStyled) => {
                     </tbody>
                 </table>
                 <h3 style={{gridArea: "seats-title"}}>Selected seats</h3>
-                <div style={{gridArea: "seats"}}>
+                <div style={{gridArea: "seats", rowGap: 10, alignSelf: "start", display: "flex", flexWrap: "wrap"}}>
                     {selectedSeats.length === 0 &&
                         "None"}
                     {selectedSeats.map(seat =>
