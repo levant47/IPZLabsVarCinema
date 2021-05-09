@@ -21,6 +21,8 @@ namespace IPZLabsVarCinema
                 /* SeatsOccupied: */ session.Tickets.Count,
                 /* SeatsTotal: */ session.Hall.SeatRowCount * session.Hall.SeatRowSize
             ))
+            .ToList()
+            .OrderBy(session => session.StartTime)
             .ToList();
     }
 }
