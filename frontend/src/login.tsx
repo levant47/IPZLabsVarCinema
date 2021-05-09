@@ -19,7 +19,7 @@ export const LogIn = styled((props: PropsFromStyled) => {
                     return;
                 }
                 response.json().then(user => {
-                    localStorage.setItem("user", user);
+                    localStorage.setItem("user", JSON.stringify(user));
                     location.pathname = "/";
                     return;
                 });

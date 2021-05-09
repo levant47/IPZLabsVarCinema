@@ -16,11 +16,12 @@ const Seat = styled.div<{selected: boolean, occupied: boolean}>`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    opacity: ${props => props.occupied ? "0.25" : "1"};
 
-    :hover {
+    ${props => !props.occupied && `:hover {
         background-color: DeepSkyBlue;
         cursor: pointer;
-    }
+    }`}
 `;
 
 const SelectedSeatContainer = styled.span`
@@ -46,6 +47,21 @@ export const SessionDetailsPage = styled((props: PropsFromStyled) => {
     const [session, setSession] = React.useState<SessionFullVM>();
     const [selectedSeats, setSelectedSeats] = React.useState<SelectedSeat[]>([]);
 
+    const handleCheckout = () => {
+        fetch(`/api/tickets/buy`, {
+            method: "POST",
+            body: JSON.stringify({
+                userId: JSON.parse(localStorage.getItem("user")!).id,
+                sessionId: session!.id,
+                seats: selectedSeats,
+            }),
+            headers: {"Content-Type": "application/json"},
+        })
+            .then(() => {
+                location.href = "/account";
+            });
+    };
+
     React.useEffect(() => {
         fetch(`/api/sessions/${sessionIdFromRoute}/view`)
             .then(response => response.json())
@@ -70,6 +86,9 @@ export const SessionDetailsPage = styled((props: PropsFromStyled) => {
                                         occupied={session.occupiedSeats.includes(row*session.hallSeatRowSize + column+1)}
                                         selected={selectedSeats.some(selectedSeat => selectedSeat.seatRow == row && selectedSeat.seatIndex === column)}
                                         onClick={() => {
+                                            if (session.occupiedSeats.includes(row*session.hallSeatRowSize + column+1)) {
+                                                return;
+                                            }
                                             if (selectedSeats.some(selectedSeat => selectedSeat.seatRow == row && selectedSeat.seatIndex === column)) {
                                                 setSelectedSeats(prevSelectedSeats => prevSelectedSeats
                                                     .filter(selectedSeat => selectedSeat.seatRow != row || selectedSeat.seatIndex !== column));
@@ -88,7 +107,7 @@ export const SessionDetailsPage = styled((props: PropsFromStyled) => {
                     {selectedSeats.map(seat =>
                         <SelectedSeatContainer>Row {seat.seatRow + 1}, Seat {seat.seatIndex + 1}</SelectedSeatContainer>)}
                 </div>
-                <button className="checkout-button" style={{gridArea: "checkout"}} disabled={selectedSeats.length === 0}>Checkout</button>
+                <button className="checkout-button" style={{gridArea: "checkout"}} disabled={selectedSeats.length === 0} onClick={handleCheckout}>Checkout</button>
             </>}
         </main>
     );

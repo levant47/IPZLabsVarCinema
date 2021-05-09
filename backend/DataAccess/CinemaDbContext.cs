@@ -81,7 +81,7 @@ namespace IPZLabsVarCinema
                 .WithMany()
                 .HasForeignKey(ticket => ticket.UserId);
             modelBuilder.Entity<Ticket>()
-                .HasOne<Session>()
+                .HasOne(ticket => ticket.Session)
                 .WithMany(session => session.Tickets)
                 .HasForeignKey(ticket => ticket.SessionId);
             modelBuilder.Entity<TicketProduct>()
@@ -297,6 +297,16 @@ Harry makes close friends and a few enemies during his first year at the school,
                     FirstName: "Anton",
                     LastName: "Bodiak",
                     Email: "anton.bodiak@nure.ua",
+                    RegistrationTime: now,
+                    Password: PasswordEncoder.Encode("test"),
+                    Role: Role.Client
+                ),
+                new User
+                (
+                    Id: 0,
+                    FirstName: "Oleg",
+                    LastName: "Kurchenko",
+                    Email: "oleg.kurchenko@nure.ua",
                     RegistrationTime: now,
                     Password: PasswordEncoder.Encode("test"),
                     Role: Role.Client

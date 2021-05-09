@@ -10,5 +10,8 @@ namespace IPZLabsVarCinema
         int SeatRow,
         int SeatIndex,
         DateTime PurchaseTime
-    );
+    )
+    {
+        public Session Session { get; set; } = null!;
+    }
 }
