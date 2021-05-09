@@ -117,7 +117,7 @@ export const SessionDetailsPage = styled((props: PropsFromStyled) => {
     display: grid;
     column-gap: 50px;
     grid-template:
-        "session-title ."
+        "session-title session-title"
         "hr hr"
         "hall-name seats-title"
         "seat-table seats" 1fr
